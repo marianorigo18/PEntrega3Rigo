@@ -88,7 +88,7 @@ function eventToButtons(){
             if(count > '0'){
                 e.target.parentElement.children[2].disabled = false;
             }
-            if(count < '0'){
+            if(count <= '0'){
                 e.target.parentElement.children[2].disabled = true;
             }
             e.target.parentElement.parentElement.children[1].children[0].value = count
