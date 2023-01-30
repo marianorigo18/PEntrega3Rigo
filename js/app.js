@@ -35,7 +35,7 @@ function mostrarProducts(){
         inputContainer.className = 'inputContainer';
         
         const cardButtonAdd = document.createElement('button');
-        cardButtonAdd.className = 'btn btn-primary btn-sm card__button';
+        cardButtonAdd.className = 'btn btn-primary btn-sm card__button btnPush';
         cardButtonAdd.textContent = 'Agregar';
         cardButtonAdd.disabled = true;
 
@@ -45,11 +45,11 @@ function mostrarProducts(){
         cardInput.setAttribute('value', '0')
 
         const cardButtonIncrease = document.createElement('button');
-        cardButtonIncrease.className = 'btn btn-primary btn-sm card__button';
+        cardButtonIncrease.className = 'btn btn-primary btn-sm card__button increase buttonFunc';
         cardButtonIncrease.textContent = '+';
 
         const cardButtonDecrease = document.createElement('button');
-        cardButtonDecrease.className = 'btn btn-primary btn-sm card__button';
+        cardButtonDecrease.className = 'btn btn-primary btn-sm card__button decrease buttonFunc';
         cardButtonDecrease.textContent = '-';
 
         
@@ -72,11 +72,28 @@ function mostrarProducts(){
 }
 
 function eventToButtons(){
-    const btns = document.querySelectorAll('.btn');
+    let count = '0';
+    const btns = document.querySelectorAll('.buttonFunc');
     const inputs = document.querySelectorAll('.input-card');
+    const btnsPush = document.querySelectorAll('.btnPush');
+    console.log(btnsPush)
     btns.forEach(function(btn){
-        btn.addEventListener('click', ()=>{
-        console.log(inputs[0].value)
+        btn.addEventListener('click', function(e){
+            const styles = e.currentTarget.classList;
+            if(styles.contains('increase')){
+                // console.log('i´m increase')
+                count++;
+            }
+            if(styles.contains('decrease')){
+                // console.log('i´m decrease')
+                count--;
+            }
+            if(count > '0'){
+                btnsPush.disabled = false;
+            }
+            console.log(count)
+            console.log(e.target.parentElement.parentElement)
+            inputs[0].value = count;
     })
 })
 }
