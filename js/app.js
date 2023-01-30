@@ -73,9 +73,10 @@ function mostrarProducts(){
 
 function eventToButtons(){
     const btns = document.querySelectorAll('.btn');
+    const inputs = document.querySelectorAll('.input-card');
     btns.forEach(function(btn){
         btn.addEventListener('click', ()=>{
-        console.log('im button')
+        console.log(inputs[0].value)
     })
 })
 }
