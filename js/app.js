@@ -74,9 +74,6 @@ function mostrarProducts(){
 function eventToButtons(){
     let count = '0';
     const btns = document.querySelectorAll('.buttonFunc');
-    const inputs = document.querySelectorAll('.input-card');
-    const btnsPush = document.querySelectorAll('.btnPush');
-    console.log(btnsPush)
     btns.forEach(function(btn){
         btn.addEventListener('click', function(e){
             const styles = e.currentTarget.classList;
@@ -89,11 +86,13 @@ function eventToButtons(){
                 count--;
             }
             if(count > '0'){
-                btnsPush.disabled = false;
+                e.target.parentElement.children[2].disabled = false;
             }
-            console.log(count)
-            console.log(e.target.parentElement.parentElement)
-            inputs[0].value = count;
+            if(count < '0'){
+                e.target.parentElement.children[2].disabled = true;
+            }
+            e.target.parentElement.parentElement.children[1].children[0].value = count
+            console.log(e.target.parentElement.children[2])
     })
 })
 }
