@@ -56,10 +56,31 @@ a{
     visibility: hidden;
     margin: 0 0 5px 5px;
   }
+  .input-card{
+    width: 50%;
+    visibility: hidden;
+    margin: 5px;
+  }
   .card__product:hover {
     box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
     scale: 1.01; 
   }
   .card__product:hover .card__button{
     visibility: visible;
+  }
+  .card__product:hover .input-card{
+    visibility: visible;
+  }
+  .inputContainer{
+    display: flex;
+    justify-content: center;
+  }
+  .input-card{
+    border-radius: 5px;
+    border: 1px solid #E5E7E9 ;
+    color: #7b7b7b;
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
   }
