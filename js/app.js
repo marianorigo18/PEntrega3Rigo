@@ -35,14 +35,14 @@ function mostrarProducts(){
         inputContainer.className = 'inputContainer';
         
         const cardButtonAdd = document.createElement('button');
-        cardButtonAdd.className = 'btn btn-primary btn-sm card__button btnPush';
+        cardButtonAdd.className = 'btn btn-primary btn-sm card__button btnPush buttonFunc';
+        cardButtonAdd.disabled = true
         cardButtonAdd.textContent = 'Agregar';
-        cardButtonAdd.disabled = true;
 
         const cardInput = document.createElement('input');
         cardInput.className = 'input-card';
         cardInput.setAttribute('type', 'number')
-        cardInput.setAttribute('value', '1')
+        cardInput.setAttribute('value', '0')
 
         const cardButtonIncrease = document.createElement('button');
         cardButtonIncrease.className = 'btn btn-primary btn-sm card__button increase buttonFunc';
@@ -50,6 +50,7 @@ function mostrarProducts(){
 
         const cardButtonDecrease = document.createElement('button');
         cardButtonDecrease.className = 'btn btn-primary btn-sm card__button decrease buttonFunc';
+        cardButtonDecrease.disabled = true;
         cardButtonDecrease.textContent = '-';
 
         
@@ -76,34 +77,26 @@ function eventToButtons(){
     btns.forEach(function(btn){
         btn.addEventListener('click', function(e){
             const styles = e.currentTarget.classList;
+            let input = e.target.parentElement.parentElement.children[1].children[0]
+            let buttonPush = e.target.parentElement.children[2];
+            let buttonDecrement = e.target.parentElement.children[0];
+
+            if(styles.contains('btnPush')){
+                console.log(input.value)
+            }
             if(styles.contains('increase')){
-                e.target.parentElement.parentElement.children[1].children[0].value ++
+                input.value ++
             }
             if(styles.contains('decrease')){
-                e.target.parentElement.parentElement.children[1].children[0].value --
+                input.value --
             }
-            if(e.target.parentElement.parentElement.children[1].children[0].value > '0'){
-            e.target.parentElement.children[2].disabled = false;
+            if(input.value > '0'){
+                buttonPush.disabled = false;
+                buttonDecrement.disabled = false;
+            }else{
+                buttonPush.disabled = true;
+                buttonDecrement.disabled = true;
             }
-            if(e.target.parentElement.parentElement.children[1].children[0].value <= '0'){
-                e.target.parentElement.children[0].disabled = true
-            }
-            console.log(e.target.parentElement.parentElement.children[1].children[0].value);
-
         })
     })
 }
-
-// const styles = e.currentTarget.classList;
-// inputValue = e.target.parentElement.parentElement.children[1].children[0].value;
-
-// console.log(inputValue)
-// if(styles.contains('increase')){
-//     // count++;
-// }
-// if(styles.contains('decrease')){
-//     // count--;
-// }
-// if(count > '0'){
-//     e.target.parentElement.children[2].disabled = false;
-// }
