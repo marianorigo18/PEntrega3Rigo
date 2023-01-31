@@ -47,6 +47,7 @@ function mostrarProducts(){
         const cardInput = document.createElement('input');
         cardInput.className = 'input-card';
         cardInput.setAttribute('type', 'number')
+        cardInput.setAttribute('placeholder', 'cantidad')
 
         const cardButtonIncrease = document.createElement('button');
         cardButtonIncrease.className = 'btn btn-primary btn-sm card__button increase buttonFunc';
