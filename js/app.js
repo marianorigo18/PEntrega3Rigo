@@ -47,7 +47,6 @@ function mostrarProducts(){
         const cardInput = document.createElement('input');
         cardInput.className = 'input-card';
         cardInput.setAttribute('type', 'number')
-        cardInput.setAttribute('value', '0')
 
         const cardButtonIncrease = document.createElement('button');
         cardButtonIncrease.className = 'btn btn-primary btn-sm card__button increase buttonFunc';
@@ -113,5 +112,6 @@ function setCart(reference){
         title: reference.children[1].children[0].textContent,
         quantity: reference.children[1].children[1].children[0].value,
     }
-    console.log(product)
+    carrito.push(product)
+    console.log(carrito)
 }
