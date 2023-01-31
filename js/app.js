@@ -42,7 +42,7 @@ function mostrarProducts(){
         const cardInput = document.createElement('input');
         cardInput.className = 'input-card';
         cardInput.setAttribute('type', 'number')
-        cardInput.setAttribute('value', '0')
+        cardInput.setAttribute('value', '1')
 
         const cardButtonIncrease = document.createElement('button');
         cardButtonIncrease.className = 'btn btn-primary btn-sm card__button increase buttonFunc';
@@ -72,27 +72,38 @@ function mostrarProducts(){
 }
 
 function eventToButtons(){
-    let count = '0';
     const btns = document.querySelectorAll('.buttonFunc');
     btns.forEach(function(btn){
         btn.addEventListener('click', function(e){
             const styles = e.currentTarget.classList;
             if(styles.contains('increase')){
-                // console.log('i´m increase')
-                count++;
+                e.target.parentElement.parentElement.children[1].children[0].value ++
             }
             if(styles.contains('decrease')){
-                // console.log('i´m decrease')
-                count--;
+                e.target.parentElement.parentElement.children[1].children[0].value --
             }
-            if(count > '0'){
-                e.target.parentElement.children[2].disabled = false;
+            if(e.target.parentElement.parentElement.children[1].children[0].value > '0'){
+            e.target.parentElement.children[2].disabled = false;
             }
-            if(count <= '0'){
-                e.target.parentElement.children[2].disabled = true;
+            if(e.target.parentElement.parentElement.children[1].children[0].value <= '0'){
+                e.target.parentElement.children[0].disabled = true
             }
-            e.target.parentElement.parentElement.children[1].children[0].value = count
-            console.log(e.target.parentElement.children[2])
+            console.log(e.target.parentElement.parentElement.children[1].children[0].value);
+
+        })
     })
-})
 }
+
+// const styles = e.currentTarget.classList;
+// inputValue = e.target.parentElement.parentElement.children[1].children[0].value;
+
+// console.log(inputValue)
+// if(styles.contains('increase')){
+//     // count++;
+// }
+// if(styles.contains('decrease')){
+//     // count--;
+// }
+// if(count > '0'){
+//     e.target.parentElement.children[2].disabled = false;
+// }
