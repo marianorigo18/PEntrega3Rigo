@@ -109,7 +109,9 @@ function eventToButtons(){
 function setCart(reference){
     const product = {
         id: reference.id,
-        img: reference.img
+        img: reference.children[0].src,
+        title: reference.children[1].children[0].textContent,
+        quantity: reference.children[1].children[1].children[0].value,
     }
     console.log(product)
 }
