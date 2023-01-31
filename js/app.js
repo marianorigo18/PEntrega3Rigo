@@ -1,4 +1,8 @@
-mostrarProducts()
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarProducts()
+})
+
+let carrito = []
 
 function mostrarProducts(){
     const containerCard = document.querySelector('#container__cards');
@@ -12,6 +16,7 @@ function mostrarProducts(){
         
         const card = document.createElement('div');
         card.classList.add('card__product');
+        card.setAttribute('id', element.id)
         
         const cardLink = document.createElement('div');
         cardLink.classList.add('card__link')
@@ -82,7 +87,7 @@ function eventToButtons(){
             let buttonDecrement = e.target.parentElement.children[0];
 
             if(styles.contains('btnPush')){
-                console.log(input.value)
+                setCart(e.target.parentElement.parentElement.parentElement)
             }
             if(styles.contains('increase')){
                 input.value ++
@@ -99,4 +104,12 @@ function eventToButtons(){
             }
         })
     })
+}
+
+function setCart(reference){
+    const product = {
+        id: reference.id,
+        img: reference.img
+    }
+    console.log(product)
 }
